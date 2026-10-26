@@ -1,0 +1,48 @@
+# ── Lab output (sensitif) ──
+runs/*
+!runs/.gitkeep
+poc-run-*/
+*.response.http
+*.response.body
+*.response.headers.json
+final.json
+run.json
+heap.json
+code.json
+
+# ── Lab files (generated) ──
+public/
+print-flag
+nginx.conf
+Dockerfile
+
+# ── Logs ──
+logs/
+*.log
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ── IDE ──
+.vscode/
+.idea/
+*.iml
+
+# ── Secrets ──
+.env
+*.key
+*.pem
+secrets/
+
+# ── Docker ──
+docker-compose.override.yml

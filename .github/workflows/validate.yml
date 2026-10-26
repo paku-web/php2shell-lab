@@ -1,0 +1,27 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+      - name: Lint shell
+        run: |
+          for f in scripts/*.sh; do
+            shellcheck "$f" || true
+          done
+      - name: Python syntax
+        run: python3 -m py_compile poc/php2shell_poc.py
+      - name: Validate docs
+        run: |
+          for f in docs/*.md README.md; do
+            [ -s "$f" ] || (echo "Empty: $f" && exit 1)
+          done
